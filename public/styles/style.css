@@ -1,0 +1,10 @@
+.jumbotron{
+    color: white;
+    background-image: url(/images/investment.jpg);
+    background-repeat: no-repeat;
+    align-items:center;
+    background-size:cover;
+    min-height: 30em; 
+    background-position: center center;
+}
+
