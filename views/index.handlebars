@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light sticky-top" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-light sticky-top" style="background-color: #b7b7b8;">
   <!-- Navbar content -->
   <span class="navbar-text">
     Beta Scraper
@@ -7,10 +7,34 @@
 
 
 <div class="jumbotron jumbotron-fluid d-flex align-items-center shadow-lg">
-    <div class="container text-center">
+  <div class="container text-center">
 
-            <h1 class="display-4"><strong>Finance Geek</strong> </h1>
-            <p class="lead">Fiance News on your tips</p>
+    <h1 class="display-4"><strong>Finance Geek</strong> </h1>
+    <p class="lead">Fiance News on your tips</p>
 
+  </div>
+</div>
+
+<div class="container-fluid mt-2">
+
+  {{#each news}}
+
+  <div class="card mb-3 mt-3 shadow-lg">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img
+          src="{{this.image}}" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{{this.postUrl}}">{{this.title}}</a> </h5>
+          <p class="card-text">{{this.subnews}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
     </div>
+  </div>
+
+  {{/each}}
+
 </div>
