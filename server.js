@@ -3,7 +3,7 @@ const express=require('express')
 const exphbs=require('express-handlebars')
 const PORT=process.env.PORT||3000
 const path=require('path')
-
+const mongoose = require('mongoose')
 const app =express()
 
 // Middleware
@@ -16,6 +16,9 @@ app.use(express.static("public"))
 // handlebars
 app.engine('handlebars',exphbs({defaultLayout:'main'}));
 app.set('view engine','handlebars')
+
+// Connect to the Mongo DB
+mongoose.connect("mongodb://localhost/financescraper", { useNewUrlParser: true })
 
 require('./routes/htmlRoutes')(app)
 
