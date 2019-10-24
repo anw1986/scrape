@@ -6,6 +6,11 @@ var NoteSchema=new Schema({
 
     noteText:{
         type:String
+    },
+
+    article:{
+        type: Schema.Types.ObjectId,
+        ref:'Article'
     }
 
 })

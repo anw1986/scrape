@@ -11,6 +11,7 @@ $(document).ready(function () {
 
     })
 
+    // clear the records/documents
     $("#clear").on('click',()=>{
         $.ajax({
             method:'DELETE',
@@ -21,8 +22,56 @@ $(document).ready(function () {
         })
     })
 
-    $(".save").on('click',()=>{
+    // send the PUT request
+    $(".save").on('click',function(){
         var saveId=$(this).data("val")
-        console.log(saveId)
+        $.ajax({
+            method:'PUT',
+            url:'/api/save/'+saveId
+        }).then((response)=>{
+            console.log(response)
+            location.reload()
+        })
     })
+
+    $(".remove").on('click',function(){
+        var removeId=$(this).data("val")
+        $.ajax({
+            method:'PUT',
+            url:'/api/remove/'+removeId
+        }).then((response)=>{
+            console.log(response)
+            location.reload()
+        })
+    })
+
+    $('.addnote').on('click',function(){
+        var articleId=$(this).data('val')
+        $("#notesubmit").on('click',function(){
+            let note=$("#noteinput").val().trim();
+            $.ajax({
+                method: "POST",
+                url:"/article/note",
+                data:{
+                    noteText:note,
+                    article:articleId
+                }
+            }).then(function(data){
+                console.log(data)
+                location.reload()
+            })
+        })
+    })
+
+    $(".note-delete").on('click',function(){
+        var commentId=$(this).attr('id')
+        $.ajax({
+            method:'DELETE',
+            url:"/api/comment/"+commentId
+        }).then(function(response){
+            console.log(response)
+            location.reload()
+        })
+    })
+
 })

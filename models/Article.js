@@ -18,10 +18,10 @@ var ArticleSchema=new Schema({
     postUrl:{
         type:String
     },
-    note:{
+    note:[{
         type:Schema.Types.ObjectId,
         ref:"Note"
-    },
+    }],
     saved:{
         type:Boolean,
         default:false
